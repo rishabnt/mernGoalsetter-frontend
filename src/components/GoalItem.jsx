@@ -1,16 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteGoal, updateGoal, reset } from '../features/goals/goalSlice'
+import { deleteGoal, updateGoal, reset } from '../features/notes/goalSlice'
 
 function GoalItem({ goal }) {
   const dispatch = useDispatch()
   const goalText = goal.text;
+  const timer = null;
+  const editMode = true;
 
   const handleChange = (e, goal) => {
     // e.preventDefault()
+    clearTimeout(timer)
     const goalData = {text: e.target.value}
     const goalId = goal._id
-    dispatch(updateGoal([goalId, goalData]))
-    e.target.value = goal.text
+    timer = setTimeout(() => {
+      dispatch(updateGoal([goalId, goalData]))
+    }, 3000)
+    // e.target.value = goal.text
   }
 
   return (
@@ -18,7 +23,8 @@ function GoalItem({ goal }) {
       <div>
         {new Date(goal.updatedAt).toLocaleString('en-IN')}
       </div>
-      <input id="goal" type="text" value={goalText} onLoad={e => {e.target.value = goalText}} onChange={e => handleChange(e, goal)} />
+      {/* <input id="goal" type="text" value={goalText} onChange={e => handleChange(e, goal)} /> */}
+      <h2 id='text'>{goalText}</h2>
       <button className="close" onClick={() => dispatch(deleteGoal(goal._id))}>x</button>
     </div>
   )

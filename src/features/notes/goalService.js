@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/goals/'
+const API_URL = '/api/notes/'
 
 //Create new goal
 const createGoal = async (goalData, token) => {
@@ -27,25 +27,6 @@ const getGoals = async (token) => {
 
   return response.data
 }
-
-// //Update user goal 
-// const updateGoal = async (goalData, token) => {
-//   const goalText = goalData[1]
-//   const goalId = goalData[0]
-//   console.log(`Bearer ${token}`)
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`
-//     },
-//     data: {
-//       text: goalText
-//     }
-//   }
-
-//   const response = await axios.put(API_URL + goalId, config)
-
-//   return response.data
-// }
 
 //Update user goal 
 const updateGoal = async (goalData, token) => {
