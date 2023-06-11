@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/notes/'
+const apiURL = process.env.REACT_APP_API_URL + '/api/goals/'
 
 //Create new goal
 const createGoal = async (goalData, token) => {
@@ -10,7 +10,7 @@ const createGoal = async (goalData, token) => {
     }
   }
 
-  const response = await axios.post(API_URL, goalData, config)
+  const response = await axios.post(apiURL, goalData, config)
 
   return response.data
 }
@@ -23,7 +23,7 @@ const getGoals = async (token) => {
     },
   }
 
-  const response = await axios.get(API_URL, config)
+  const response = await axios.get(apiURL, config)
 
   return response.data
 }
@@ -41,7 +41,7 @@ const updateGoal = async (goalData, token) => {
     console.log(goalData[1])
   }
 
-  const response = await axios.post(API_URL+goalData[0], goalData[1], config)
+  const response = await axios.post(apiURL+goalData[0], goalData[1], config)
 
   return response.data
 }
@@ -54,7 +54,7 @@ const deleteGoal = async (goalId, token) => {
     }
   }
 
-  const response = await axios.delete(API_URL+goalId, config)
+  const response = await axios.delete(apiURL+goalId, config)
   console.log(response)
 
   return response.data
