@@ -1,4 +1,4 @@
-# mernGoalsetter-frontend
+# Goalsetter
 Goalsetter is a React and Node.js Full-stack application for creating and tracking goals. The app implements JWT authentication for Login and Register functions for users, and also protected API routes to stop unauthorized users to hit the API. 
 
 # Server Code
